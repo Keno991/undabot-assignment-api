@@ -1,0 +1,81 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Undabot assignment API",
+        "description": "Undabot assignment API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/ping": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "description": "Tests if server is alive.",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns 200 if ok"
+                    }
+                }
+            }
+        },
+        "/contact": {
+            "post": {
+                "tags": [
+                    "ContactUs"
+                ],
+                "description": "Receives contact data and validates it",
+                "parameters": [{
+                    "name": "ContactData",
+                    "in": "body",
+                    "required": true,
+                    "description": "Contact data",
+                    "schema": {
+                        "$ref": "#/definitions/ContactData"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns 200 if ok"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ContactData": {
+            "required": [
+                "email",
+                "message"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
